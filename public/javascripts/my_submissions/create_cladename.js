@@ -361,7 +361,7 @@ jQuery.showSpecifier = function(sfor,callback){
         var ty = sfor.specifier_type
         temp = pr.templates[ty +'_specifier']  
     }
-    var opts = { width: 550, title: 'Specifier/Qualifier Edit', buttons: [
+    var opts = { width: 550, title: 'Edit Specifier', buttons: [
       { text: 'Save', 
         click: function(){
           jQuery.save_specifier()
