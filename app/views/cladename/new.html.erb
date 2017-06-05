@@ -93,17 +93,18 @@
     <div id="tab3-div" style="display:none;margin-left:5px;">
 
       <div style="float:left;margin-right:20px;">
-        <p><b>Clade Type:</b>
+        <p><b>Definition Type:</b>
         <p>
           <select data-bind="value: type" name="cladename[type]" id="new_type" class="value-input">
-            <option value="node-based_standard">Node Based - Standard</option>
-            <option value="node-based_crown_clade_branch-modified">Node Based - Crown Clade - Branch-modified</option>
-            <option value="node-based_crown_clade_apomorphy-modified">Node Based - Crown Clade - Apomorphy-modified
-            </option>
-            <option value="branch-based_standard">Branch Based - Standard</option>
-            <option value="branch-based_total_clade">Branch Based - Total Clade</option>
-            <option value="branch-based_total_clade_explicit">Branch Based - Total Clade - Explicit</option>
-            <option value="apomorphy-based_standard">Apomorphy Based</option>
+            <option value="minimum-clade_standard">Minimum Clade - Standard</option>
+            <option value="minimum-clade_directly_specified_ancestor">Minimum Clade - Directly Specified Ancestor <span class="required">(Rare)</span></option>
+            <option value="maximum-clade_standard">Maximum Clade - Standard</option>
+            <option value="apomorphy-based_standard">Apomorphy Based - Standard</option>
+            <option value="minimum-crown-clade">Minimum Crown Clade</option>
+            <option value="maximum-crown-clade">Maximum Crown Clade</option>
+            <option value="apomorphy-modified_crown_clade">Apomorphy Modified Crown Clade</option>
+            <option value="maximum-total-clade">Maximum Total Clade</option>
+            <option value="crown-based_total_clade">Crown Based - Total Clade</option>
           </select>
         </p>
 
