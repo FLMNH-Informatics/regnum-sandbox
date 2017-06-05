@@ -57,7 +57,7 @@ module TabsHelper
       @current_tab = tab if current_tab?(tab)
 
     end
-    result_str <<  (logged_in? ? "<li class=\"top_tab active\"><a href=\"/logout\">Logout</a></li>" : "<li class=\"top_tab active\"><a href=\"/login\">Login</a></li>")
+    result_str <<  (logged_in? ? "" : "<li class=\"top_tab active\"><a href=\"/login\">Login</a></li>")
     result_str << "</ul></div>"
   end
 
