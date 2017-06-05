@@ -8,7 +8,7 @@
     <li class="active-tab tab" id="tab1">Clade Name</li>
 
     <li id="tab3" class="tab">Clade Type &amp; Specifiers</li>
-    <li id="tab4" class="tab">Clade Definition</li>
+    <li id="tab4" class="tab">Definition</li>
     <li id="spinner" style="border:none;background:none;display:none;"><img src="/images/ajax-loader.gif"/>&nbsp;&nbsp;saving...
     </li>
   </ul>
@@ -171,30 +171,32 @@
       <div style="width:600px;float:left;">
         <div style="float:right;clear:both;font-weight:bold;max-width:600px;" id="citation-tables">
 
-          <p>Clade Citation:</p>
-          <div class="citations-table" id="def-citation">
-            <table class="sortable-table" id="description">
-              <thead>
-              <tr style="background-color:white;">
-                <th style="width:200px;">Type</th>
-                <th style="width:200px;">Title</th>
-                <th style="width:200px;">Author(s)</th>
-                <th colspan="2">actions</th>
-              </tr>
-              </thead>
-              <tbody data-bind="foreach: citations.description">
-              <tr id="clade-citation" class="odd-row">
-                <td data-bind="text: citation_type"></td>
-                <td style="max-width:200px" data-bind="text: title"></td>
-                <td style="max-width:200px" data-bind="text: citation_authors"></td>
-                <td>
-                  <input data-bind="click: function(d,e){pr.ba.editCitation('description',d,e)}" type="button" class="def-citation submit_button edit" value="edit"/>
-                </td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-          <p>Primary Phylogeny Reference: </p>
+          <!--<p>Reference for Phylogenetic Definition Citation:</p>-->
+          <!--<div class="citations-table" id="def-citation">-->
+            <!--<table class="sortable-table" id="description">-->
+              <!--<thead>-->
+              <!--<tr style="background-color:white;">-->
+                <!--<th style="width:200px;">Author(s)</th>-->
+                <!--<th>Year</th>-->
+                <!--<th style="width:200px;">Type</th>-->
+                <!--<th style="width:200px;">Title</th>-->
+                <!--<th colspan="2">actions</th>-->
+              <!--</tr>-->
+              <!--</thead>-->
+              <!--<tbody data-bind="foreach: citations.description">-->
+              <!--<tr id="clade-citation" class="odd-row">-->
+                <!--<td style="max-width:200px" data-bind="text: citation_authors"></td>-->
+                <!--<td data-bind="text: year"></td>-->
+                <!--<td data-bind="text: citation_type"></td>-->
+                <!--<td style="max-width:200px" data-bind="text: title"></td>-->
+                <!--<td>-->
+                  <!--<input data-bind="click: function(d,e){pr.ba.editCitation('description',d,e)}" type="button" class="def-citation submit_button edit" value="edit"/>-->
+                <!--</td>-->
+              <!--</tr>-->
+              <!--</tbody>-->
+            <!--</table>-->
+          <!--</div>-->
+          <p>Reference for Phylogenetic Definition: </p>
           <div id="primary-phylo-citation" class="citations-table">
             <table class="sortable-table" id="primary-phylogeny">
               <thead>
@@ -211,7 +213,7 @@
                 <td style="max-width:200px" data-bind="text: title"></td>
                 <td style="max-width:200px" data-bind="text: citation_authors"></td>
                 <td>
-                  <input data-bind="click: function(d,e){pr.ba.editCitation('primary-phylogeny',d,e)}" type="button" class="submit_button" value="edit"/>
+                  <input data-bind="click: function(d,e){pr.ba.editCitation('primary-phylogeny',d,e)}" type="button" class="submit_button" value="add/edit"/>
                 </td>
               </tr>
               </tbody>

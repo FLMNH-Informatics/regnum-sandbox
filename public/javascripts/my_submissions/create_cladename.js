@@ -399,7 +399,6 @@ jQuery.showSpecifier = function(sfor,callback){
 }
 //
 jQuery.showCitation = function(cobj,cfor,callback){
-    ///
     if(typeof(cobj) == 'undefined'){
         cobj = pr.emptyCitationObj
     }
