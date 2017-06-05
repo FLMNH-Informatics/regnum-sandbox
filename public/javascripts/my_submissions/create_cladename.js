@@ -422,9 +422,13 @@ jQuery.showCitation = function(cobj,cfor,callback){
         }else{
             jQuery('#citation-attachment-cell').html(pr.emptyAttachmentFile)
         }
+
+        if(cfor !== "primary-phylogeny"){
+            jQuery(".primary_only").remove();
+        }
     }
     ///
-    var opts = {width: 630, title: 'Edit Citation', buttons: [
+    var opts = {width: 630, title: 'Add/Edit Reference', buttons: [
       { text: 'Save', 
         click: function(){
           jQuery.save_citation()
