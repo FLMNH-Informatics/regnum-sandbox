@@ -150,7 +150,6 @@ function Phyloregnum(){
         //
        
         jQuery.each(this.submissionModel.specifiers(), function(ind,obj){
-
             if(obj.specifier_type === 'apomorphy'){
                apomorph.push(obj.specifier_character_name+'(' + obj.specifier_name + ')' )
             }else{
