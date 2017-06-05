@@ -52,7 +52,8 @@
   display: inline;
   list-style-type: none;
   padding: 4px 0;
-  margin-right:1px;
+  margin-right:3px;
+
 
 }
 
@@ -60,7 +61,7 @@
 {
   position: relative;
   top: 1px;
-  padding: 4px 0px;
+  padding: 6px 10px;
   display: inline;
   margin: 1px 2px 0 0;
   text-align: center;
@@ -77,7 +78,8 @@
 }
 
 .top_tab.current a {
-  padding: 4px 10px;
+    padding: 8px 12px 4px 12px;
+    font-size: 120%;
   width: 100%;
   color: #333;
 }
@@ -85,7 +87,6 @@
 .top_tab.active a {
   position: relative;
   margin-top: 1px;
-  padding: 4px 10px;
   display:inline;
   height: 100%;
   text-decoration: none;
@@ -185,8 +186,16 @@ ul#secondary {
 
 .top_subtab.current a {
   /*border-top: 2px solid #ffd155; */
-  background-color: #ffe190;
+  background-color: #FFFDF3;
   color: #333;
+    padding-bottom: 12px;
+    border-bottom-color: #FFFDF3;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.top_subtab.current a:hover{
+    background-color: #FFFDF3;
 }
 
 
