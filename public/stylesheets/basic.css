@@ -59,6 +59,13 @@ p.note {
     line-height: 130%;
     margin-top: 0;
 }
+
+span.required{
+    font-weight: lighter;
+    font-size: 90%;
+    color: #444444;
+}
+
 /*new stuff */
 .bold{
   font-weight:bold;
