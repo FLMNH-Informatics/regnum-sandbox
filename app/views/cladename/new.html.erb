@@ -262,9 +262,6 @@
       <div data-bind="text: name_string" id="new_name_string"></div>
       <p style="color:#444;font-weight:bold;">Registration
         #:&nbsp;&nbsp;<span style="color:#333" class="temp-id"></span></p>
-      <div id="new-cladename-save-submit">
-        <input type="button" value="Save" class="button" style="border:1px solid #999"/>&nbsp;&nbsp;<input style="border:1px solid #999" type="button" value="Submit for review" class="button"/>
-      </div>
     </div>
 
 
@@ -283,7 +280,9 @@
     <%#= draggable_element "new-cladename-synonyms" %>
 
   </div>
-
+</div>
+<div  style="margin-left:30px; margin-bottom: 20px; float:left;clear:both;max-width:800px;min-width:600px;" id="new-cladename-save-submit">
+  <input type="button" value="Save" class="button" style="border:1px solid #999"/>&nbsp;&nbsp;<input style="border:1px solid #999" type="button" value="Submit for review" class="button"/>
 </div>
 <div style="margin-left:30px;float:left;clear:both;max-width:800px;min-width:600px;">
   <%= render :partial => 'shared/status_change_list' %>
