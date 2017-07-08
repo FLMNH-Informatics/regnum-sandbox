@@ -171,31 +171,36 @@ function Phyloregnum(){
             }
         })//
 
+
+        var gt = '&gt;&nbsp;'
+          , lt = '&lt;&nbsp;'
+          , nabla = '&nabla;';
+
         switch(this.submissionModel.type()){
             // <  = &lt;    > = &gt;
             case 'node-based_standard':
-                str = '&lt;'//'<'
+                str = lt//'<'
                 break
             case 'node-based_crown_clade':
-                str = '&lt;'// '<'
+                str = lt// '<'
                 break
             case 'node-based_crown_clade_branch-modified':
-                str =  '&gt;&nabla;'// '>∇'
+                str =  gt+nabla// '>∇'
                 break
             case 'node-based_crown_clade_apomorphy-modified':
-                str = '&gt;&nabla;'// '>∇'
+                str = gt+nabla// '>∇'
                 break
             case 'branch-based_standard':
-                str = '&gt;'// '>'
+                str = gt// '>'
                 break
             case 'branch-based_total_clade':
-                str = '&gt;'// '>'
+                str = gt// '>'
                 break
             case 'branch-based_total_clade_explicit':
-                str = '&gt;'//'>'
+                str = gt//'>'
                 break
             case 'apomorphy-based_standard':
-                str = '&gt;'//'>'
+                str = gt//'>'
                 break
         }//
      
