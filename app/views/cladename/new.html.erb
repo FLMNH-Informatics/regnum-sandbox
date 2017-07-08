@@ -158,12 +158,12 @@
 
       <div style="float:left;margin-right:20px;">
 
-        <p><b>Abbreviated Definition:</b></p>
+        <p><b><label for="new_abbreviation">Abbreviated Definition:</label></b></p>
         <div data-bind="html: abbreviation" id="new_abbreviation"></div>
 
-        <p><b><%= label_tag 'Clade Definition:' %></b></p>
+        <p><b><label for="new_definition">Verbatim Definition:</label></b></p>
         <p>
-          <textarea data-bind="value: definition" name="cladename[definition]" id="new_definition" rows="16" cols="60" class="value-input"></textarea>
+          <textarea data-bind="value: definition" placeholder="Enter definition exactly as stated in the publication. (Do not include a statement of the definition type or an abbreviated definition)" name="cladename[definition]" id="new_definition" rows="16" cols="60" class="value-input"></textarea>
         </p>
       </div>
 
