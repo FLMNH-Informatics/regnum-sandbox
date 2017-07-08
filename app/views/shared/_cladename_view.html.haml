@@ -2,7 +2,7 @@
   #clade-name= @sub.name
   %ul#view-tabs
     %li#name-tab.section-tab{:style => 'border-bottom:1px solid #FFFAE1;'} Clade Name
-    %li#type-tab.section-tab{:style => 'background-color:#ffe8ac;'} Clade Type & Specifiers
+    %li#type-tab.section-tab{:style => 'background-color:#ffe8ac;'} Definition Type & Specifiers
     %li#definition-tab.section-tab{:style => 'background-color:#ffe8ac;'} Clade Definition
   #name-tab-div.section.section-tab-div{}
     %table.clade-name-table
@@ -71,7 +71,7 @@
   #type-tab-div.section.section-tab-div{:style => 'display:none;'}
     %table
       %tr
-        %td.name Type:
+        %td.name Definition Type:
       %tr
         %td= @sub.type.try(:humanize)
       %tr
