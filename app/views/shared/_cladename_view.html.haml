@@ -85,7 +85,8 @@
               -if val.has_key? 'specifier_name'
                 %h3
                   &nbsp;
-                  = val['specifier_name'] + ' : '
+                  %em= val['specifier_name']
+                  = ' : '
                   = (val['kind'] || val['specifier_kind'])+ ' ' + (val['kind_type'] || val['specifier_kind_type'])                               
                 %div
                   %table               
