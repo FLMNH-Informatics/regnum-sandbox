@@ -360,14 +360,17 @@ jQuery.showSpecifier = function(sfor,callback){
         var ty = sfor.specifier_type
         temp = pr.templates[ty +'_specifier']  
     }
-    var opts = { width: 550, title: 'Edit Specifier', buttons: [
-      { text: 'Save', 
-        click: function(){
-          jQuery.save_specifier()
-          jQuery.closeFloatWindow() 
-        }
-      }
-    ]}
+    var opts = {
+        width: 550,
+        title: 'Edit Specifier',
+        buttons: [
+          { text: 'Save',
+            click: function(){
+              jQuery.save_specifier()
+              jQuery.closeFloatWindow()
+            }
+          }]
+    }
     //callback to setup observers
     var cback = function(){
         jQuery('#window-for-text').html((sfor == 'new' ? 'New' : 'Edit') + ' Specifier/Qualifier')       
