@@ -18,8 +18,8 @@ class Concept < ActiveRecord::Base
 
   belongs_to :ontology, :inverse_of => :concepts
 
-  has_many :terms, ->{ where preferred: true } #:inverse_of => :concept #, :order => '`term'#, :dependent => :delete_all
-  has_one :term, :conditions => "preferred"
+  has_many :terms, :inverse_of => :concept #, :order => '`term'#, :dependent => :delete_all
+  has_one :term, ->{ where preferred: true } # :conditions => "preferred"
 
   has_many :relationships, :foreign_key => "from_concept_id", :inverse_of => :from_concept
            #:dependent => :destroy#, :include => [:relationship_term, :to_concept_term]

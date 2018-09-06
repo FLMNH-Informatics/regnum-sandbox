@@ -54,7 +54,7 @@
                     %tr
                       %td
                         %span
-                          %span{:style => 'font-weight:bold;'}= c.humanize + ': '
+                          %span{:style => 'font-weight:bold;'}= cit.humanize + ': '
                           = format_output(cit,@sub.citations['preexisting']['0'].delete(cit))
                   -attachment_prepare(@sub.citations['preexisting']['0']).each do |key,val|
                     -if !val.blank?
@@ -73,7 +73,7 @@
       %tr
         %td.name Definition Type:
       %tr
-        %td= @sub.type.try(:humanize)
+        %td= @sub.clade_type.try(:humanize)
       %tr
         %td.name
           Specifiers:
@@ -109,91 +109,37 @@
                             = format_output(k,v)
                      
   #definition-tab-div.section.section-tab-div{:style => 'display:none'}
-    %table
-      %tr
-        %td.name Abbreviated Definition:
-      %tr
-        %td= abbreviation_formatted
-      %tr
-        %td.name Definition:
-      %tr
-        %td{:style => 'text-align:justify;'}= @sub.definition
-      %tr
-        %td.name
-          Clade Citation:
-      %tr
-        %td
-          -if @sub.citations['description']['0'].is_a? Hash
-            .accordion
-              %h3 
-                &nbsp;
-                = (@sub.citations['description']['0'].has_key?('title') ? @sub.citations['description']['0']['title'] : @sub.citations['description']['0']['article_title'])
-              %div
-                %table{:style => 'max-width:500px'}
-                  -['citation_type','title','citation_authors'].each do |cit|
-                    %tr
-                      %td
-                        %span
-                          %span{:style => 'font-weight:bold;'}= cit.humanize + ': '
-                          = format_output(cit,@sub.citations['description']['0'].delete(cit))
-                  -attachment_prepare(@sub.citations['description']['0']).each do |key,val|
-                    -if !val.blank?
-                      %tr
-                        %td
-                          %span
-                            %span{:style => 'font-weight:bold;'}= key.humanize + ': '
-                            = format_output(key,val)
-      -if @sub.citations.has_key?('primary-phylogeny')
-        %tr
-          %td.name
-            Primary Reference Phylogeny:
-        %tr
-          %td
-            -if @sub.citations['primary-phylogeny']['0'].is_a?  Hash
-              .accordion
-                %h3 
-                  &nbsp;
-                  = (@sub.citations['primary-phylogeny']['0'].has_key?('title') ? @sub.citations['primary-phylogeny']['0']['title'] : @sub.citations['primary-phylogeny']['0']['article_title'])
-                %div
-                  %table{:style => 'max-width:500px'}
-                    -['citation_type','title','citation_authors'].each do |c|
-                      %tr
-                        %td
-                          %span
-                            %span{:style => 'font-weight:bold;'}= c.humanize + ': '
-                            = format_output(c,@sub.citations['primary-phylogeny']['0'].delete(c))
-                    -attachment_prepare(@sub.citations['primary-phylogeny']['0']).each do |key,val|
-                      -if !val.blank?
-                        %tr
-                          %td
-                            %span
-                              %span{:style => 'font-weight:bold;'}= key.humanize + ': '
-                              = format_output(key,val)
-      %tr
-        %td.name
-          Additional Reference Phylogenies:
-      %tr
-        %td
-          -if @sub.citations['phylogeny']['0'].is_a? Hash
-            .accordion
-              -@sub.citations['phylogeny'].each do |ind,phy|
-                %h3
-                  &nbsp;  
-                  = phy['title']
-                %div
-                  %table{:style => 'max-width:500px'}
-                    -['citation_type','title','citation_authors'].each do |cit|
-                      %tr
-                        %td
-                          %span
-                            %span{:style => 'font-weight:bold;'}= cit.humanize + ': '
-                            = format_output(cit,phy.delete(cit))
-                    -attachment_prepare(phy).each do |key,val|
-                      -if !val.blank?
-                        %tr
-                          %td
-                            %span
-                              %span{:style => 'font-weight:bold;'}= key.humanize + ': '
-                              = format_output(key,val)
+    %h2 Abbreviated Definition
+    %p= abbreviation_formatted
+    %h2 Verbatim Definition
+    %p= verbatim_definition
+    %h2 Clade Citation
+    -#-if @sub.citations['description']['0'].is_a? Hash
+    -#  .accordion
+    -#    %h3
+    -#      &nbsp;
+    -#      = (@sub.citations['description']['0'].has_key?('title') ? @sub.citations['description']['0']['title'] : @sub.citations['description']['0']['article_title'])
+    -#    %dl.inline.clade_citation
+    -#      -['citation_type','title','citation_authors'].each do |cit|
+    -#        %dt= cit.humanize
+    -#        %dd= format_output(cit,@sub.citations['description']['0'].delete(cit))
+    -#        -attachment_prepare(@sub.citations['description']['0']).each do |key,val|
+    -#          -if !val.blank?
+    -#            %dt= key.humanize + ': '
+    -#            %dd= format_output(key,val)
+    -if @sub.citations.has_key?('primary-phylogeny')
+      %h2.name Primary Reference Phylogeny:
+      -if @sub.citations['primary-phylogeny']['0'].is_a?  Hash
+        .accordion
+          %h3{title: output_citation(@sub.citations['primary-phylogeny']['0'])}= citation_title(@sub.citations['primary-phylogeny']['0'])
+          .primary_phylogeny
+            %p.citation= output_citation(@sub.citations['primary-phylogeny']['0'])
+    %h2.name Additional Reference Phylogenies:
+    -if @sub.citations['phylogeny']['0'].is_a? Hash
+      .accordion
+        -@sub.citations['phylogeny'].each do |ind,phy|
+          %h3{title: output_citation(phy)}= citation_title(phy)
+          .additional_reference
+            %p.citation= output_citation(phy)
 
 
