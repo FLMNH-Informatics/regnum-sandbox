@@ -46,6 +46,15 @@
 	font-style: italic;
 }
 
+#new-preexisting-box p{
+	margin-top: 0;
+}
+
+#new-preexisting-reference-add{
+	float: right;
+	margin-right: 1rem;
+}
+
 /*******************
 Add author partial
 ******************/
@@ -75,6 +84,7 @@ Add author partial
 }
 
 .add-author-container .author .author-controls .author-validation-message{
+	display: block;
 	font-style: italic;
 	color: darkred;
 }
@@ -90,4 +100,12 @@ Add author partial
 
 .add-author-container .author:first-of-type .author-controls a.remove-author{
 	/*display: none;*/
+}
+
+.table-controls{
+	margin-top: 0.5rem;
+}
+
+.table-controls button{
+	margin-left: 5rem;
 }
