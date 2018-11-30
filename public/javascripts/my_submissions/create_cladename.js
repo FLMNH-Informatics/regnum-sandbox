@@ -28,8 +28,7 @@ function Phyloregnum(){
             'specifier_type': ko.observable(specifier.specifier_type || 'species'),
             'authors': pr.makeAuthors(specifier.authors),
             'specifier_kind': ko.observable(specifier.specifier_kind || ''),
-            'specifier_kind_type': ko.observable(specifier.specifer_kind_type || ''),
-            'specifier_character_name': specifier.specifier_character_name || '',
+            'specifier_character_name': ko.observable(specifier.specifier_character_name || ''),
             'specifier_name': ko.observable(specifier.specifier_name || ''),
             'specifier_year': ko.observable(specifier.specifier_year || ''),
             'specifier_code': specifier.specifier_code || '',
@@ -104,6 +103,21 @@ function Phyloregnum(){
     //     }
     // }
 
+    this.invalidAuthors = function(a,b){
+        debugger;
+        return true;
+    }
+
+    this.onCladeTypeClick = function(obj,event){
+        debugger;
+        'hi'
+    }
+
+    this.onCladeTypeChange = function(obj, event, three, four){
+        debugger;
+        'hi';
+    }
+
     this.displayAuthors = function(){
         var auths = this.authors();
 
@@ -128,6 +142,10 @@ function Phyloregnum(){
         displayAuths: ko.pureComputed(self.displayAuthors, this)
     }
 
+    this.isApomorphy = function(){
+        return [ 'apomorphy-based_standard', 'apomorphy-modified_crown_clade' ].includes( self.submissionModel.clade_type() )
+    }
+
     this.ko = {
         //json response loading map for ko.mapping
         mapping:  {
@@ -145,29 +163,6 @@ function Phyloregnum(){
                         return pr.makeSpecifier(options.data);
                     }
                     return self.makeSpecifier();
-                    // jQuery.each(options.data, function(item,obj){
-                    //     if(typeof obj=='object'){
-                    //         item=obj;
-                    //     }
-                    //     if(item.kind_type){
-                    //         item.specifier_kind_type=item.kind_type;
-                    //     }
-                    //     if(item.kind){
-                    //         item.specifier_kind=item.kind;
-                    //     }
-                    //     if(typeof(item) != 'undefined' && typeof(item['specifier_type']) != 'undefined' && typeof(item['specifier_type_kind']) != 'undefined'){
-                    //         if(typeof(item['specifier_kind'])=='undefined' || item['specifier_kind']==null ){
-                    //             item['specifier_kind']='';
-                    //         }else if(typeof(item['specifier_kind_type'])=='undefined' || item['specifier_kind_type']==null ){
-                    //             item['specifier_kind_type']='';
-                    //         }
-                    //
-                    //     }
-                    //     specs.push(item)// debugger;
-
-                    // });
-                    //
-                    // return ko.observableArray(self.ko.objToArray(specs)).extend({paging: 5});
                 }
             },
             'citations': {
