@@ -1,29 +1,63 @@
-#create_clade
-  %h3 New Submission
-  %form{:action => save_path, :method => :post}
-    %input{:type => :hidden, :name => :submission_id, :value => :new}
-    %table
-      %tr
-        %td.title
-          Name:
-          %span.required (Required)
-      %tr
+%form#create_clade{ action: save_path, method: 'POST', data: { bind: 'submit: submitNewSubmission' } }
+  %input{ type: 'hidden', name: 'submission_id', value: 'new' }
+  .col-sm-12.form-group
+    %h2 New Submission
+    %hr
+  .form-group.col-sm-10
+    %label{ for: 'name'}
+      Name
+      %span.required (Required)
+    %input.form-control{ name: 'name', id: 'name', type: 'text', data: { bind: 'textInput: new_submission.name' } }
+  .form-group.col-sm-2.mtformicon
+    / ko if: checkingName()
+    %i.fas.fa-spinner.fa-spin.fa-2x
+    / /ko
+    / ko if: !checkingName() && nameUnique() && new_submission.name().length > 0
+    %i.fas.fa-check-circle.fa-2x.green
+    / /ko
+    / ko if: !checkingName() && !nameUnique() && !acceptDuplicate()
+    %i.fas.fa-exclamation-triangle.fa-2x.red
+    / /ko
+  / ko if: existing_submissions().length > 0
+  .col-sm-12.form-group
+    %p.help-block.text-warning
+      %b Warning:
+      The name you're creating already exists in RegNum, with the submitter information:
+    %table#existing_submissions
+      %thead
+        %th Name
+        %th Submitter
+        %th Submitter email
+      %tbody{ data: { bind: 'foreach: existing_submissions' } }
         %td
-          %input{:name => 'name', :id => 'name', :type => :text, :size => 30}
-      %tr
-        %td.title          
-          #opt-out-box
-            %input{:type => "checkbox" , :name => "opt-out", :id => 'opt-out'}
-            Opt-out of Phylocode           
-            #opt-out-table{:style => 'display:none;padding-top:10px;'}          
-              %table
-                %tr
-                  %td{ :style => "font-weight:bold;"} 
-                    Reason for Opt-out
-                    %span{:style => 'font-size:9px;color:darkred;font-weight:normal;'} required 
-                %tr
-                  %td
-                    %textarea{:name => 'reason', :id => 'reason', :rows => 8, :cols => 41}            
-      %tr
+          %em{ data: { bind: 'text: name' } }
+        %td{ data: { bind: 'text: submitter.fullname' } }
         %td
-          %input{:type => :submit, :value => 'create', :id => 'create_button'}
+          %a{ data: { bind: 'text: submitter.email, attr: { href: "mailto: " + submitter.email }' } }
+  .col-sm-12.form-group
+    %label
+      %input{ type: 'checkbox', name: 'acceptDuplicate', data: { bind: 'checked: acceptDuplicate' } }
+      I understand, proceed with name as entered.
+    / ko ifnot: duplicateValid()
+    .help-block.has-error Please acknowledge a submission with the same name already exists.
+    / /ko
+  / /ko
+  .col-sm-12.form-group
+    %label
+      %input#opt-out{ type: 'checkbox', name: 'opt-out', data: { bind: 'checked: new_submission["opt-out"]' } }
+      Opt-out of Phylocode
+  / ko if: new_submission['opt-out']()
+  .col-sm-12.form-group
+    %label{ for: 'reason' }
+      Reason for Opt-out
+      %span.required (Required)
+    %textarea.form-control#reason{ name: 'reason', rows: 8, data: { bind: 'textInput: new_submission.reason' } }
+    / ko ifnot: optOutValid()
+    .help-block.has-error Please enter a reason
+    / /ko
+  / /ko
+  .col-sm-12.form-group
+    %input#create_button.btn.btn-default.submit_button.col-md-6{ value: 'create', type: 'submit', data: { bind: 'enable: isValid' } }
+  / ko ifnot: isValid()
+  .col-md-12.help-block.has-error Please fill all required fields
+  / /ko

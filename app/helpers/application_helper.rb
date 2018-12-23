@@ -6,11 +6,11 @@ module ApplicationHelper
     out = ''
     case controller.controller_name+'/'+action_name
       when 'my_submission/index'
-        files.concat ['list_submissions.js', 'cladename_tools.js?v1']
+        files.concat ['list_submissions.js', 'cladename_tools.js']
       when 'my_submission/new'
-        files.concat ['new_submission.js?v1']#['cladename_tools.js','create_cladename.js']
+        files.concat ['new_submission.js']#['cladename_tools.js','create_cladename.js']
       when 'my_submission/show'
-        files.concat ['my_submissions/create_cladename.js?v1','cladename_tools.js?v1','my_submissions/float_window_actions.js?v1','character_window.js?v1', 'my_submissions/ko.paging.extender.js']
+        files.concat ['my_submissions/create_cladename.js?v1','cladename_tools.js','my_submissions/float_window_actions.js?v1','character_window.js?v1', 'my_submissions/ko.paging.extender.js?v1']
       when 'search/index'
         files.concat ['search_phylocode.js']
       when 'submissions/index'
