@@ -31,7 +31,8 @@
       %tbody{ data: { bind: 'foreach: existing_submissions' } }
         %td
           %em{ data: { bind: 'text: name' } }
-        %td{ data: { bind: 'text: submitter.fullname' } }
+        %td
+          %span{ data: { bind: 'text: submitter.fullname' } }
         %td
           %a{ data: { bind: 'text: submitter.email, attr: { href: "mailto: " + submitter.email }' } }
   .col-sm-12.form-group
@@ -57,7 +58,7 @@
     / /ko
   / /ko
   .col-sm-12.form-group
-    %input#create_button.btn.btn-default.submit_button.col-md-6{ value: 'create', type: 'submit', data: { bind: 'enable: isValid' } }
+    %input#create_button.btn.btn-default.submit_button.col-md-6{ value: 'Create', type: 'submit', data: { bind: 'enable: isValid' } }
   / ko ifnot: isValid()
   .col-md-12.help-block.has-error Please fill all required fields
   / /ko

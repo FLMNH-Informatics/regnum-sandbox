@@ -22,7 +22,7 @@ module ApplicationHelper
       when 'phenotypes/index'
         files.concat ['application.js', 'my_submissions/ko.paging.extender.js', 'prototype.js','scriptaculous.js','builder.js','effects.js','characters.js','controls.js', 'dragdrop.js','phenotypes/float_window_actions.js']
     end
-    files.each{|f| out +=  javascript_include_tag(f)+"\r\n" }
+    files.each{ |f| out +=  javascript_include_tag(f + "?#{Time.now.to_i}")+"\r\n" }
     raw(out)
   end
   
